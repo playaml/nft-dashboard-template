@@ -38,6 +38,19 @@ jobs:
       with:
         node-version: 16.x
 
+   - name: Build polygon-ethereum-nextjs-marketplace
+      shell: /bin/bash -e {0}
+      run: |
+        cd ./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace
+        npm prune
+        npm install
+        npm run build
+
+    - name: Copy polygon-ethereum-nextjs-marketplace
+      shell: /bin/bash -e {0}
+      run: |
+        cp -vr "./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace/out" "build/marketplace"
+
     - name: Build lens-protocol-frontend
       shell: /bin/bash -e {0}
       run: |
@@ -58,19 +71,6 @@ jobs:
       shell: /bin/bash -e {0}
       run: |
         cp -vr "./vendor/github.com/dabit3/lens-protocol-frontend/out" "build/lens-protocol-frontend"
-
-    - name: Build polygon-ethereum-nextjs-marketplace
-      shell: /bin/bash -e {0}
-      run: |
-        cd ./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace
-        npm prune
-        npm install
-        npm run build
-
-    - name: Copy lens-protocol-frontend
-      shell: /bin/bash -e {0}
-      run: |
-        cp -vr "./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace/out" "build/marketplace"
 
     - name: Copy Ventus
       shell: /bin/bash -e {0}
