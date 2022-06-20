@@ -20,7 +20,7 @@ module.exports = {
       // Infura
       // url: `https://polygon-mainnet.infura.io/v3/${infuraId}`,
       url: "https://rpc-mainnet.maticvigil.com",
-      accounts: [process.env.privateKey]
+      //accounts: [process.env.privateKey]
     }
   },
   solidity: {
