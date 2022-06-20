@@ -68,6 +68,15 @@ jobs:
         npx hardhat compile
         npm run build
 
+    - name: Fix next.js absolute paths
+      shell: /bin/bash -e {0}
+      run: |
+        cd ./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace
+        for file in `grep -l -r "/_next"`; do
+          echo "update file: $file"
+          sed -i "s+/_next/+_next/+g" $file
+        done
+
     - name: Copy polygon-ethereum-nextjs-marketplace
       shell: /bin/bash -e {0}
       run: |
