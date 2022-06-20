@@ -63,7 +63,7 @@ jobs:
       shell: /bin/bash -e {0}
       run: |
         cp -vr "./vendor/github.com/rlamana/Ventus/dist" "build/Ventus/"
-        cp -vr "./vendor/github.com/rlamana/Ventus/examples" "build/Ventus:/"
+        cp -vr "./vendor/github.com/rlamana/Ventus/examples" "build/Ventus/"
 
 
     - name: Upload production-ready build files
