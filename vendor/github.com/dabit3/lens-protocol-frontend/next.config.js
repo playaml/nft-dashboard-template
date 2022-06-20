@@ -4,6 +4,7 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: '',
+    assetPrefix: 'lens-protocol-frontend/',
     domains: ['ipfs.infura.io'],
   },
 }
