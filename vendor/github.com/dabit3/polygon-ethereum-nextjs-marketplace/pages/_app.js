@@ -1,7 +1,6 @@
 /* pages/_app.js */
 import '../styles/globals.css'
 import Link from 'next/link'
-import Script from 'next/script'
 
 function MyApp({ Component, pageProps }) {
 
@@ -33,9 +32,6 @@ function MyApp({ Component, pageProps }) {
         </div>
       </nav>
       <Component {...pageProps} />
-    </div>
-    <div>
-      <Script src="selection.js" strategy="afterInteractive"></Script>
     </div>
   )
 }
