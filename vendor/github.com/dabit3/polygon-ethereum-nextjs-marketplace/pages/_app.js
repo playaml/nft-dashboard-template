@@ -3,6 +3,11 @@ import '../styles/globals.css'
 import Link from 'next/link'
 
 function MyApp({ Component, pageProps }) {
+  document.onselectionchange = function() {
+    console.log('New selection made');
+    let selection = document.getSelection();
+  };
+
   return (
     <div>
       <nav className="border-b p-6">
