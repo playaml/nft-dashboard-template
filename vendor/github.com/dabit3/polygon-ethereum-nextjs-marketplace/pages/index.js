@@ -30,8 +30,8 @@ export default function Home() {
     // oldNetwork exists, it represents a changing network
       console.log("New Network name=", newNetwork.name);
       console.log("New Network chain id=", newNetwork.chainId);
-      if (newNetwork.chainId != 42261)
-        alert("At this time we only support the Oasis testnet (Emerald)");
+      if (newNetwork.chainId != 137)
+        alert("At this time we only support the Polygon mainnet ");
       else
         parent.postMessage({ event: "network", name: newNetwork.name}, "*");
       if (oldNetwork) {
