@@ -27,6 +27,12 @@ jobs:
     
     - name: Build project
       run: npm run build
+      
+    - name: copy DragDropInteractions
+      uses: canastro/copy-file-action@master
+      with:
+        source: "vendor/github.com/codrops/DragDropInteractions"
+        target: "build/"
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
