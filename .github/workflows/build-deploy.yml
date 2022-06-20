@@ -38,7 +38,7 @@ jobs:
       with:
         node-version: 16.x
 
-   - name: Build polygon-ethereum-nextjs-marketplace
+    - name: Build polygon-ethereum-nextjs-marketplace
       shell: /bin/bash -e {0}
       run: |
         cd ./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace
@@ -78,7 +78,6 @@ jobs:
         mkdir -p ./build/Ventus
         cp -vr "./vendor/github.com/rlamana/Ventus/dist" "./build/Ventus/"
         cp -vr "./vendor/github.com/rlamana/Ventus/examples" "./build/Ventus/"
-
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
