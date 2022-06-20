@@ -59,6 +59,13 @@ jobs:
       run: |
         cp -vr "./vendor/github.com/dabit3/lens-protocol-frontend/out" "build/lens-protocol-frontend"
 
+    - name: Copy Ventus
+      shell: /bin/bash -e {0}
+      run: |
+        cp -vr "./vendor/github.com/rlamana/Ventus/dist" "build/Ventus/"
+        cp -vr "./vendor/github.com/rlamana/Ventus/example" "build/Ventus:/"
+
+
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:
