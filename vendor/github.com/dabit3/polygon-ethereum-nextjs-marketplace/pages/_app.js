@@ -1,14 +1,12 @@
 /* pages/_app.js */
 import '../styles/globals.css'
 import Link from 'next/link'
+import Script from 'next/script'
 
 function MyApp({ Component, pageProps }) {
-  document.onselectionchange = function() {
-    console.log('New selection made');
-    let selection = document.getSelection();
-  };
 
   return (
+    <Script src="selection.js" strategy="afterInteractive" />
     <div>
       <nav className="border-b p-6">
         <p className="text-4xl font-bold">Metaverse Marketplace</p>
