@@ -63,8 +63,8 @@ jobs:
       shell: /bin/bash -e {0}
       run: |
         cd ./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace
-        yarn
-        yarn build
+        npm install
+        npm run build
 
     - name: Copy lens-protocol-frontend
       shell: /bin/bash -e {0}
