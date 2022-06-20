@@ -4,7 +4,6 @@ const nextConfig = {
   images: {
     loader: 'akamai',
     path: '',
-    assetPrefix: '',
     domains: ['ipfs.infura.io'],
   },
   async headers() {

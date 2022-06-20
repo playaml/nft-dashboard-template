@@ -50,6 +50,7 @@ jobs:
       run: |
         cd ./vendor/github.com/dabit3/lens-protocol-frontend
         for file in `grep -l -r "/_next"`; do
+          echo "update file: $file"
           sed -i "s+/_next/+_next/+g" $file
         done
 
