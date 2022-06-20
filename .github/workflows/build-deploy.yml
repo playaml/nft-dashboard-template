@@ -36,7 +36,7 @@ jobs:
     - name: Install Node.js v16
       uses: actions/setup-node@v1
       with:
-        node-version: 16.x
+        node-version: 15.x
 
     - name: Build polygon-ethereum-nextjs-marketplace
       shell: /bin/bash -e {0}
@@ -50,6 +50,11 @@ jobs:
       shell: /bin/bash -e {0}
       run: |
         cp -vr "./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace/out" "build/marketplace"
+
+    - name: Install Node.js v16
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.x
 
     - name: Build lens-protocol-frontend
       shell: /bin/bash -e {0}
