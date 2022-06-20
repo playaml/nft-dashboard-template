@@ -2,7 +2,6 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    loader: 'akamai',
     domains: ['ipfs.infura.io'],
   },
 }
