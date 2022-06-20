@@ -33,22 +33,22 @@ jobs:
       run: |
         cp -vr "vendor/github.com/codrops/DragDropInteractions" "build/"
 
-    - name: copy DragDropInteractions
-      shell: /bin/bash -e {0}
-      run: |
-        cp -vr "./vendor/github.com/dabit3/lens-protocol-frontend/out" "build/lens-protocol-frontend"
-
-    - name: Install Node.js
+    - name: Install Node.js v16
       uses: actions/setup-node@v1
       with:
         node-version: 16.x
 
-    - name: Build  lens-protocol-frontend
+    - name: Build lens-protocol-frontend
       shell: /bin/bash -e {0}
       run: |
         cd ./vendor/github.com/dabit3/lens-protocol-frontend
         yarn
         yarn build
+
+    - name: Copy lens-protocol-frontend
+      shell: /bin/bash -e {0}
+      run: |
+        cp -vr "./vendor/github.com/dabit3/lens-protocol-frontend/out" "build/lens-protocol-frontend"
 
     - name: Build project
       run: npm run build
