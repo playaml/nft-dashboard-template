@@ -63,7 +63,7 @@ jobs:
       shell: /bin/bash -e {0}
       run: |
         mkdir -p ./build/Ventus/dist
-        cp -vr "./vendor/github.com/rlamana/Ventus/dist" "./build/Ventus/dist"
+        cp -vr "./vendor/github.com/rlamana/Ventus/dist/" "./build/Ventus/dist/"
         cp -vr "./vendor/github.com/rlamana/Ventus/examples" "./build/Ventus/"
 
 
