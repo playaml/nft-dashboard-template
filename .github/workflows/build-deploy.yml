@@ -28,21 +28,17 @@ jobs:
     - name: Build project
       run: npm run build
     
-    - name: copy DragDropInteractions
+    - name: Copy DragDropInteractions
       shell: /bin/bash -e {0}
       run: |
         cp -vr "vendor/github.com/codrops/DragDropInteractions" "build/"
 
-    - name: Install NPM packages for lens-protocol-frontend
-      - uses: actions/checkout@v2
-      - uses: borales/actions-yarn@v3.0.0
-        with:
-          cmd: install # will run `yarn install` command
-      working-directory: ./vendor/github.com/dabit3/lens-protocol-frontend
-
-    - name: Build project lens-protocol-frontend
-      run: npm run build
-      working-directory: ./vendor/github.com/dabit3/lens-protocol-frontend
+    - name: Build  lens-protocol-frontend
+      shell: /bin/bash -e {0}
+      run: |
+        cd ./vendor/github.com/dabit3/lens-protocol-frontend
+        yarn
+        yarn build
 
     - name: copy DragDropInteractions
       shell: /bin/bash -e {0}
