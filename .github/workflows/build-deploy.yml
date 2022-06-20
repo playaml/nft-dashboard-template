@@ -62,8 +62,8 @@ jobs:
     - name: Copy Ventus
       shell: /bin/bash -e {0}
       run: |
-        mkdir -p ./build/Ventus/dist
-        cp -vr "./vendor/github.com/rlamana/Ventus/dist/" "./build/Ventus/dist/"
+        mkdir -p ./build/Ventus
+        cp -vr "./vendor/github.com/rlamana/Ventus/dist" "./build/Ventus/"
         cp -vr "./vendor/github.com/rlamana/Ventus/examples" "./build/Ventus/"
 
 
