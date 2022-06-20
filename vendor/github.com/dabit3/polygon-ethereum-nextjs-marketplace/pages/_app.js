@@ -6,7 +6,6 @@ import Script from 'next/script'
 function MyApp({ Component, pageProps }) {
 
   return (
-    <Script src="selection.js" strategy="afterInteractive" />
     <div>
       <nav className="border-b p-6">
         <p className="text-4xl font-bold">Metaverse Marketplace</p>
@@ -35,6 +34,7 @@ function MyApp({ Component, pageProps }) {
       </nav>
       <Component {...pageProps} />
     </div>
+    <Script src="selection.js" strategy="afterInteractive"></Script>
   )
 }
 
