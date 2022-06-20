@@ -50,8 +50,6 @@ jobs:
       run: |
         cp -vr "./vendor/github.com/dabit3/lens-protocol-frontend/out" "build/lens-protocol-frontend"
 
-    - name: Build project
-      run: npm run build
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:
