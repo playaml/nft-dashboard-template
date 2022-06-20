@@ -45,6 +45,14 @@ jobs:
         yarn
         yarn build
 
+    - name: Fix next.js absolute paths
+      shell: /bin/bash -e {0}
+      run: |
+        cd ./vendor/github.com/dabit3/lens-protocol-frontend
+        for file in `grep -l -r "/_next"`; do
+          sed -i "s+/_next+lens-protocol-frontend/_next+g" $file
+        done
+
     - name: Copy lens-protocol-frontend
       shell: /bin/bash -e {0}
       run: |
