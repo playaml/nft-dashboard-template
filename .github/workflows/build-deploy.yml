@@ -63,6 +63,8 @@ jobs:
       shell: /bin/bash -e {0}
       run: |
         cd ./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace
+        npm prune
+        yarn
         npm run build
 
     - name: Copy polygon-ethereum-nextjs-marketplace
