@@ -34,9 +34,9 @@ function MyApp({ Component, pageProps }) {
       </nav>
       <Component {...pageProps} />
     </div>
-    <React.Fragment>
-      <Script src="selection.js" strategy="afterInteractive" />
-    </React.Fragment>
+    <div>
+      <Script src="selection.js" strategy="afterInteractive"></Script>
+    </div>
   )
 }
 
