@@ -65,6 +65,7 @@ jobs:
         cd ./vendor/github.com/dabit3/polygon-ethereum-nextjs-marketplace
         npm prune
         yarn
+        npx hardhat compile
         npm run build
 
     - name: Copy polygon-ethereum-nextjs-marketplace
