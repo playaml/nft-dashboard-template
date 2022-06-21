@@ -1,5 +1,5 @@
 .grid {
-	margin: 0 auto;
+#	margin: 0 auto;
 	max-width: 50em;
 	padding: 0 1em;
 }
@@ -12,7 +12,7 @@
 	width: 5.5em;
 	height: 5.5em;
 	border-radius: 4px;
-	background: #a2aab0;
+	background: #transparent;
 	color: #d2dee5;
 	text-align: center;
 }
@@ -29,7 +29,7 @@
 }
 
 .is-dragging {
-	background: #525b62;
+	background: #transparent;
 }
 
 .is-active {
@@ -64,7 +64,7 @@
 	height: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
-	background: #34495e;
+	background: #cc6055;
 	text-align: left;
 	-webkit-transition: -webkit-transform 0.5s;
 	transition: transform 0.5s;
@@ -98,14 +98,14 @@
 	width: 12em;
 	height: 12em;
 	border-radius: 4px;
-	background: #6686a7;
+	background: rgba(0,0,0,0.1);
 	text-align: center;
 	-webkit-transition: -webkit-transform 0.3s, background 0.3s;
   transition: transform 0.3s, background 0.3s;
 }
 
 .drop-area__item.highlight {
-	background: #84a4c4;
+	background: rgba(0,0,0,0.15);
 	-webkit-transform: scale3d(1.08,1.08,1);
 	transform: scale3d(1.08,1.08,1);
 }

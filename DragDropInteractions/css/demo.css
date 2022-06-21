@@ -16,7 +16,7 @@
 .clearfix:after { clear: both; }
 
 body {
-	background: #2f3238;
+	background: #transparent;
 	color: #fff;
 	font-weight: 400;
 	font-size: 1em;
@@ -33,8 +33,8 @@ a:hover, a:focus {
 	color: #fff;
 }
 
-.skin-1 { background: #ccd1d5; color: #fff; }
-.skin-1 a { color: #3498db; }
+.skin-1 { background: #transparent; color: #fff; }
+.skin-1 a { color: #000; }
 .skin-1 a:hover, .skin-1 a:focus { color: #2980b9; }
 
 .skin-2 { background: #333; color: #fff; }
@@ -58,7 +58,7 @@ a:hover, a:focus {
 .skin-6 a:hover, .skin-6 a:focus { color: #474843; }
 
 .content {
-	max-width: 1290px;
+	max-width: 12900px;
 	margin: 0 auto;
 	text-align: center;
 	-webkit-touch-callout: none;
