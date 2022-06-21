@@ -24,11 +24,11 @@
 	      console.log("New Network name=", newNetwork.name);
 	      console.log("New Network chain id=", newNetwork.chainId);
 	      
-
-	      if (newNetwork.chainId != 42261) {
+              
+	      if (newNetwork.chainId != 137) {
 		//alert(newNetwork.chainId);
 		parent.postMessage("expose","*");
-		document.getElementById("modal_msg").innerText = "At this time we only support the Oasis testnet (Emerald)";
+		document.getElementById("modal_msg").innerText = "At this time we only support the Polygon mainnet";
 		document.getElementById("modal_title").innerText = "Network Change";
 		document.getElementById("logo").src = "ethereum-eth-logo.svg";
                 showModal();
@@ -42,6 +42,8 @@
 		document.getElementById("network").innerText = " Connected to Ethereum (Mainnet)";
 	      if (newNetwork.chainId == 3) 
 		document.getElementById("network").innerText = " Connected to Ethereum (Ropsten)";
+	      if (newNetwork.chainId == 137) 
+		document.getElementById("network").innerText = " Connected to Polygon (mainnet)";
 
 	      if (oldNetwork) {
 		window.location.reload();
