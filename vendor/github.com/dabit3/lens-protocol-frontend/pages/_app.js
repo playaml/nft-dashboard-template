@@ -105,7 +105,7 @@ function MyApp({ Component, pageProps }) {
                     className={modalButtonStyle}
                     onClick={() => setIsModalOpen(true)}>
                     <img
-                      src="/create-post.svg"
+                      src="create-post.svg"
                       className={createPostStyle}
                     />
                   </button>
