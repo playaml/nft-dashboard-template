@@ -64,7 +64,7 @@
 			<!-- Top Navigation -->
 			<div class="codrops-top clearfix">
 				<!--a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/MorphingSearch/"><span>Previous Demo</span></a-->
-				<span class="right"><a style="position: relative; right: -130px; top: 3px;"  href="http://w3b.glass"><img id="logo" style="position: absolute; top: 15px; right: 3px;" width="15" height="15" src="oasis.svg"></img><span id="network"> Connected to Ropsten</span></a></span>
+				<span class="right"><a style="position: relative; right: -130px; top: 3px;"  href="https://w3b.glass"><img id="logo" style="position: absolute; top: 15px; right: 3px;" width="15" height="15" src="oasis.svg"></img><span id="network"> Connected to Ropsten</span></a></span>
 
 			</div>
 			<div class="content">
@@ -124,6 +124,30 @@
 		<script src="js/draggabilly.pkgd.min.js"></script>
 		<script src="js/dragdrop.js"></script>
 		<script>
+                        const overlay = document.querySelector(".overlay");
+                        const modal = document.querySelector(".modal-container");
+                        const modalTrigger = document.querySelectorAll(".modal_trigger");
+                        const modalClose = document.querySelectorAll(".modal-close");
+
+                        showModal = () => {
+                          modal.style.transform = "scale(1)";
+                          overlay.setAttribute("style", "opacity: 1; pointer-events: all;");
+                        };
+
+                        hideModal = () => {
+                          modal.style.transform = "scale(0)";
+                          overlay.setAttribute("style", "opacity: 0; pointer-events: none;");
+                          parent.postMessage("default","*");
+                        };
+
+                        modalTrigger.forEach((element) => {
+                          element.addEventListener("click", showModal);
+                        });
+
+                        modalClose.forEach((el) => {
+                          el.addEventListener("click", hideModal);
+                        });
+
 			(function() {
 				var body = document.body,
 					dropArea = document.getElementById( 'drop-area' ),
