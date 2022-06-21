@@ -7,51 +7,94 @@
 		<title>Drag and Drop Interaction Ideas | Sidebar</title>
 		<meta name="description" content="Inspiration for drag and drop interactions for the modern UI" />
 		<meta name="keywords" content="drag and drop, interaction, inspiration, web design, ui" />
-		<meta name="author" content="Codrops" />
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.2.0/css/font-awesome.min.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/sidebar.css" />
+		<link rel="stylesheet" type="text/css" href="css/open-modal.css">
 		<script src="js/modernizr.custom.js"></script>
+		<script src="js/ethers-5.2.umd.min.js"></script>
 	</head>
+	<script type="module">
+	    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+	    provider.on("network", (newNetwork, oldNetwork) => {
+	    // When a Provider makes its initial connection, it emits a "network"
+	    // event with a null oldNetwork along with the newNetwork. So, if the
+	    // oldNetwork exists, it represents a changing network
+	      console.log("New Network name=", newNetwork.name);
+	      console.log("New Network chain id=", newNetwork.chainId);
+	      
+
+	      if (newNetwork.chainId != 42261) {
+		//alert(newNetwork.chainId);
+		parent.postMessage("expose","*");
+		document.getElementById("modal_msg").innerText = "At this time we only support the Oasis testnet (Emerald)";
+		document.getElementById("modal_title").innerText = "Network Change";
+		document.getElementById("logo").src = "ethereum-eth-logo.svg";
+                showModal();
+		//alert("At this time we only support the Oasis testnet (Emerald)");
+	      } else
+		parent.postMessage({ event: "network", id: newNetwork.chainId}, "*");
+              
+	      if (newNetwork.chainId == 42261)
+		document.getElementById("network").innerText = " Connected to Emerald (testnet)";
+	      if (newNetwork.chainId == 1) 
+		document.getElementById("network").innerText = " Connected to Ethereum (Mainnet)";
+	      if (newNetwork.chainId == 3) 
+		document.getElementById("network").innerText = " Connected to Ethereum (Ropsten)";
+
+	      if (oldNetwork) {
+		window.location.reload();
+	      }
+	    });
+	</script>
 	<body class="skin-1">
+		<div class="overlay modal-close"></div>
+		<div class="modal-container">
+		  <div class="modal-close">X</div>
+		  <div id="modal_title" class="modal-title" style="color: #000;">Play A Game</div>
+		  <div id="modal_msg" class="modal-body" style="color: #000;">
+		    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis nostrum, impedit neque cum quam voluptatibus eligendi aliquid eos, excepturi ad doloribus animi quas? Nihil, soluta in, id pariatur nisi natus.
+		    Quas, incidunt, blanditiis. Doloremque, eum, officiis. Eaque excepturi numquam autem id necessitatibus eum, commodi deserunt accusamus nam, velit ea a totam possimus eveniet voluptate cum eligendi tempore quod, voluptatum non?
+		  </div>
+		</div>
 		<div class="container">
 			<!-- Top Navigation -->
 			<div class="codrops-top clearfix">
-				<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/MorphingSearch/"><span>Previous Demo</span></a>
-				<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=21275"><span>Back to the Codrops Article</span></a></span>
+				<!--a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/MorphingSearch/"><span></span></a-->
+				<span class="right"><a style="position: relative; right: -130px; top: 3px;"  href="http://coin.computer"><img id="logo" style="position: absolute; top: 15px; right: 3px;" width="15" height="15" src="oasis.svg"></img><span id="network"> Connected to Ropsten</span></a></span>
 			</div>
 			<div class="content">
-				<header class="codrops-header">
+				<!--header class="codrops-header">
 					<h1>Drag and Drop Interaction Ideas <span>Inspiration for drag and drop interactions for the modern UI</span></h1>
 					<nav class="codrops-demos">
 						<a href="index.html">Bottom Area</a>
 						<a class="current-demo" href="sidebar.html">Sidebar</a>
 						<a href="page-scale.html">Page Scale</a>
-						<a href="modal.html">Modal</a>
 						<a href="icons.html">Icons</a>
+						<a href="modal.html">Modal</a>
 						<a href="bottom-slide.html">Bottom Slide</a>
 						<a href="reveal.html">Reveal</a>
 					</nav>
-				</header>
+				</header-->
 				<div id="grid" class="grid clearfix">
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
+					<div id="g1" active="date" class="grid__item"></div>
+					<!--div id="g2"  active="date" class="grid__item"><img src="/img/linux-icon-19.png" alt="Monty On The Run" title="Monty On The Run">
+					  <a href="https://oasis.playagame.cloud">Monty On The Run</a></div-->
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
+					<div class="grid__item"></div>
 				</div>
-				<!-- Related demos -->
+				<!-- Related demos
 				<section class="related">
-					<p>If you enjoyed this demo you might also like:</p>
 					<a href="http://tympanus.net/Development/DraggableDualViewSlideshow/">
 						<img src="img/related/DualViewSlideshow.png" alt="Dual-View Slideshow Image"/>
 						<h3>Draggable Dual-View Slideshow</h3>
@@ -60,25 +103,56 @@
 						<img src="img/related/MorphingButtons.png" alt="Morphing Buttons Image" />
 						<h3>Morphing Buttons Concept</h3>
 					</a>
-				</section>
+				</section>-->
 			</div><!-- /content -->
 		</div><!-- /container -->
 		<div id="drop-area" class="drop-area">
+			<br>
+			<center>
+			<a class="codrops-icon " href="http://tympanus.net/codrops/?p=21275"><span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span></a>
+			</center>
 			<div>
+				<BR><div id="providers"><div class="drop-area__item"><br>128M<br><br>$4/Month<br><i class="fa fa-desktop fa-5x"></i><div class="dummy"></div></div>
+				<!--div style="position: relative; top: -262px; left: 40px;"><h6> Hi there</h6></div-->
+				<div class="drop-area__item"><br>128M<br><br>$4.10/Month<br><i class="fa fa-desktop fa-5x"></i><div class="dummy"></div></div>
+				<!--div style="position: relative; top: -262px; left: 40px;"><h6> Hi there</h6></div-->
+				<div class="drop-area__item"><div class="dummy"></div></div>
+				<!--div style="position: relative; top: -262px; left: 40px;"><h6> Hi there</h6></div-->
 				<div class="drop-area__item"><div class="dummy"></div></div>
 				<div class="drop-area__item"><div class="dummy"></div></div>
 				<div class="drop-area__item"><div class="dummy"></div></div>
 				<div class="drop-area__item"><div class="dummy"></div></div>
-				<div class="drop-area__item"><div class="dummy"></div></div>
-				<div class="drop-area__item"><div class="dummy"></div></div>
-				<div class="drop-area__item"><div class="dummy"></div></div>
-				<div class="drop-area__item"><div class="dummy"></div></div>
+				<div class="drop-area__item"><div class="dummy"></div></div></div>
 			</div>
 		</div>
 		<div class="drop-overlay"></div>
 		<script src="js/draggabilly.pkgd.min.js"></script>
 		<script src="js/dragdrop.js"></script>
 		<script>
+			const overlay = document.querySelector(".overlay");
+			const modal = document.querySelector(".modal-container");
+			const modalTrigger = document.querySelectorAll(".modal_trigger");
+			const modalClose = document.querySelectorAll(".modal-close");
+
+			showModal = () => {
+			  modal.style.transform = "scale(1)";
+			  overlay.setAttribute("style", "opacity: 1; pointer-events: all;");
+			};
+
+			hideModal = () => {
+			  modal.style.transform = "scale(0)";
+			  overlay.setAttribute("style", "opacity: 0; pointer-events: none;");
+			  parent.postMessage("default","*");
+			};
+
+			modalTrigger.forEach((element) => {
+			  element.addEventListener("click", showModal);
+			});
+
+			modalClose.forEach((el) => {
+			  el.addEventListener("click", hideModal);
+			});
+
 			(function() {
 				var body = document.body,
 					dropArea = document.getElementById( 'drop-area' ),
@@ -91,7 +165,7 @@
 							// show checkmark inside the droppabe element
 							classie.add( instance.el, 'drop-feedback' );
 							clearTimeout( instance.checkmarkTimeout );
-							instance.checkmarkTimeout = setTimeout( function() { 
+							instance.checkmarkTimeout = setTimeout( function() {
 								classie.remove( instance.el, 'drop-feedback' );
 							}, 800 );
 							// ...
@@ -99,8 +173,77 @@
 					} ) );
 				} );
 
+			        window.addEventListener("message", function(event) {
+                    			console.log("sidebar: Hello from " + event.data);
+                    			console.dir(event.data);
+                    			console.dir(event.data.target);
+ 					if (event.data.event) {
+						console.log("sidebar: event " + event.data.id);	
+					} else if (event.data instanceof ImageData) {
+
+						div = document.getElementById("g1");
+						const canvas = document.createElement("canvas");
+						const img = document.createElement("img");
+						canvas.width = 402;
+						canvas.height = 282;
+						const context = canvas.getContext("2d");
+						context.putImageData(event.data, 0, 0);
+						img.src = canvas.toDataURL();
+  						img.width = "270";
+						img.height = "189";
+						div.append(img);
+
+                                                var marketFrame = parent.document.getElementById("marketplace");
+                                                var dropCanvas = marketFrame.contentWindow.document.getElementById('dropCanvas')
+                                                var ctx = dropCanvas.getContext('2d');
+						ctx.scale(.66, .66);
+                                                ctx.putImageData(event.data, 0, 0);
+ 					        marketFrame.contentWindow.onDrop(event);
+					}
+					else {
+						if (event.data == "step5") {
+						    node = document.getElementById("g1");
+						    var clickEvent = document.createEvent ('MouseEvents');
+						    clickEvent.initEvent ("mousedown", true, true);
+						    node.dispatchEvent (clickEvent);
+						}
+						else
+						{
+						    var provider_list = document.getElementById("providers");
+						    var provider = document.getElementById(event.data);
+						    if (provider) {
+							// update provider
+						    }
+						    else
+						    {  
+                                                      if (typeof event.data === 'string') {
+							console.log("Adding new item");
+							// <div class="drop-area__item"><br>128M<br><br>$4.10/Month<br><i class="fa fa-desktop fa-5x"></i><div class="dummy"></div></div>
+							var new_provider = document.createElement("div");
+							var att = document.createAttribute("class");
+							att.value = "drop-area__item";
+							new_provider.setAttributeNode(att);
+							var mem = parseInt(event.data.split('-')[3]) * 128;
+							var price = (parseInt(event.data.split('-')[2]) * 20) / 100 ;
+							new_provider.innerHTML='<br>'+mem+'M<br><br>$'+price+'/Month<br><i class="fa fa-desktop fa-5x"></i><div class="dummy"></div>';
+							//var br = document.createElement("br");
+							//new_provider.prepend(br);
+							//new_provider.append = '4096M';
+							//new_provider.append(br);
+							//new_provider.append(br);
+							//new_provider.append = '$4.50/Month';
+							provider_list.prepend(new_provider);
+							console.log("Added new item memory "+mem+" at $ "+price);
+						      }
+						    }
+
+						}
+					}
+				});
+
 				// initialize draggable(s)
 				[].slice.call(document.querySelectorAll( '#grid .grid__item' )).forEach( function( el ) {
+				  if (el.hasAttribute("active"))
 					new Draggable( el, droppableArr, {
 						scroll : true,
 						scrollable : '#drop-area',
@@ -108,6 +251,7 @@
 						scrollSensitivity : 50,
 						draggabilly : { containment: document.body },
 						onStart : function() {
+							console.log("Draggable onStart");
 							// add class 'drag-active' to body
 							classie.add( body, 'drag-active' );
 							// clear timeout: dropAreaTimeout (toggle drop area)
@@ -116,6 +260,7 @@
 							classie.add( dropArea, 'show' );
 						},
 						onEnd : function( wasDropped ) {
+							console.log("Draggable onEnd");
 							var afterDropFn = function() {
 								// hide dropArea
 								classie.remove( dropArea, 'show' );
@@ -124,6 +269,9 @@
 							};
 
 							if( !wasDropped ) {
+								console.log("Draggable was not Dropped");
+								parent.postMessage("new", "*");
+								//confirm("Allow others to rent a computer from you?");
 								afterDropFn();
 							}
 							else {
