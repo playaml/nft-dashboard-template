@@ -14,16 +14,61 @@
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/sidebar.css" />
 		<script src="js/modernizr.custom.js"></script>
+		<script src="js/ethers-5.2.umd.min.js"></script>
+	<script type="module">
+	    const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+	    provider.on("network", (newNetwork, oldNetwork) => {
+	    // When a Provider makes its initial connection, it emits a "network"
+	    // event with a null oldNetwork along with the newNetwork. So, if the
+	    // oldNetwork exists, it represents a changing network
+	      console.log("New Network name=", newNetwork.name);
+	      console.log("New Network chain id=", newNetwork.chainId);
+	      
+
+	      if (newNetwork.chainId != 42261) {
+		//alert(newNetwork.chainId);
+		parent.postMessage("expose","*");
+		document.getElementById("modal_msg").innerText = "At this time we only support the Oasis testnet (Emerald)";
+		document.getElementById("modal_title").innerText = "Network Change";
+		document.getElementById("logo").src = "ethereum-eth-logo.svg";
+                showModal();
+		//alert("At this time we only support the Oasis testnet (Emerald)");
+	      } else
+		parent.postMessage({ event: "network", id: newNetwork.chainId}, "*");
+              
+	      if (newNetwork.chainId == 42261)
+		document.getElementById("network").innerText = " Connected to Emerald (testnet)";
+	      if (newNetwork.chainId == 1) 
+		document.getElementById("network").innerText = " Connected to Ethereum (Mainnet)";
+	      if (newNetwork.chainId == 3) 
+		document.getElementById("network").innerText = " Connected to Ethereum (Ropsten)";
+
+	      if (oldNetwork) {
+		window.location.reload();
+	      }
+	    });
+	</script>
+
 	</head>
 	<body class="skin-1">
+		<div class="overlay modal-close"></div>
+		<div class="modal-container">
+		  <div class="modal-close">X</div>
+		  <div id="modal_title" class="modal-title" style="color: #000;">Play A Game</div>
+		  <div id="modal_msg" class="modal-body" style="color: #000;">
+		    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis nostrum, impedit neque cum quam voluptatibus eligendi aliquid eos, excepturi ad doloribus animi quas? Nihil, soluta in, id pariatur nisi natus.
+		    Quas, incidunt, blanditiis. Doloremque, eum, officiis. Eaque excepturi numquam autem id necessitatibus eum, commodi deserunt accusamus nam, velit ea a totam possimus eveniet voluptate cum eligendi tempore quod, voluptatum non?
+		  </div>
+		</div>
 		<div class="container">
 			<!-- Top Navigation -->
 			<div class="codrops-top clearfix">
-				<a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/MorphingSearch/"><span>Previous Demo</span></a>
-				<span class="right"><a class="codrops-icon codrops-icon-drop" href="http://tympanus.net/codrops/?p=21275"><span>Back to the Codrops Article</span></a></span>
+				<!--a class="codrops-icon codrops-icon-prev" href="http://tympanus.net/Development/MorphingSearch/"><span>Previous Demo</span></a-->
+				<span class="right"><a style="position: relative; right: -130px; top: 3px;"  href="http://w3b.glass"><img id="logo" style="position: absolute; top: 15px; right: 3px;" width="15" height="15" src="oasis.svg"></img><span id="network"> Connected to Ropsten</span></a></span>
+
 			</div>
 			<div class="content">
-				<header class="codrops-header">
+				<!--header class="codrops-header">
 					<h1>Drag and Drop Interaction Ideas <span>Inspiration for drag and drop interactions for the modern UI</span></h1>
 					<nav class="codrops-demos">
 						<a href="index.html">Bottom Area</a>
@@ -34,10 +79,10 @@
 						<a href="bottom-slide.html">Bottom Slide</a>
 						<a href="reveal.html">Reveal</a>
 					</nav>
-				</header>
+				</header->
 				<div id="grid" class="grid clearfix">
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
-					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
+					<div id="g1" active="date" class="grid__item"></div>
+					<div id="g2"  active="date" class="grid__item"><img src="/img/linux-icon-19.png" alt="Monty On The Run" title="Monty On The Run"></div>
 					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
 					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
 					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
@@ -49,7 +94,7 @@
 					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
 					<div class="grid__item"><i class="fa fa-fw fa-file-text-o"></i></div>
 				</div>
-				<!-- Related demos -->
+				<!-- Related demos 
 				<section class="related">
 					<p>If you enjoyed this demo you might also like:</p>
 					<a href="http://tympanus.net/Development/DraggableDualViewSlideshow/">
@@ -60,7 +105,7 @@
 						<img src="img/related/MorphingButtons.png" alt="Morphing Buttons Image" />
 						<h3>Morphing Buttons Concept</h3>
 					</a>
-				</section>
+				</section> -->
 			</div><!-- /content -->
 		</div><!-- /container -->
 		<div id="drop-area" class="drop-area">
