@@ -271,10 +271,10 @@
 
 
 		// Exposé test button
-		$(".expose-button").click(_.throttle(function(){
-			wm.mode = 'expose';
-			return false;
-		}, 1000));
+		//$(".expose-button").click(_.throttle(function(){
+		//	wm.mode = 'expose';
+		//	return false;
+		//}, 1000));
 
 		function connectBrowserver() {
 			var server = http.createServer(function(req, res) {
