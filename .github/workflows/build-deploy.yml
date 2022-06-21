@@ -88,6 +88,8 @@ jobs:
         mkdir -p ./build/Ventus
         cp -vr "./vendor/github.com/rlamana/Ventus/dist" "./build/Ventus/"
         cp -vr "./vendor/github.com/rlamana/Ventus/examples" "./build/Ventus/"
+        mv ./build/index.html ./build/covalent.html
+        mv ./build/glass.html ./build/index.html
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
