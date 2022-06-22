@@ -1,7 +1,15 @@
 
 
 function doSomethingLater() {
-        
+
+	if (window.location.search.length > 0) {
+	  alert("Going to hide background");
+	  const collection = document.getElementsByClassName("example");
+	  for (let i = 0; i < collection.length; i++) {
+	    collection[i].style.backgroundImage = "none";
+	  }
+	}        
+
 	if (document.getElementById("marketplace"))
 	{
 	  var script = `
