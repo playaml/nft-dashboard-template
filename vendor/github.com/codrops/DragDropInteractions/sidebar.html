@@ -263,6 +263,7 @@
 						},
 						onEnd : function( wasDropped ) {
 							console.log("Draggable onEnd");
+							[].slice.call(document.querySelectorAll( '#grid .grid__item' )).forEach( function( el ) { el.classList.contains("is-active") ? console.dir(el) : console.log(".") });
 							var afterDropFn = function() {
 								// hide dropArea
 								classie.remove( dropArea, 'show' );
