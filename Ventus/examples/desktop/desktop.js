@@ -193,8 +193,10 @@
                     if (typeof event.data === 'string' && event.data.startsWith("default"))
                         setTimeout(defaultWM,2000); //wm.mode = 'default';
 
-                    if (typeof event.data === 'string' && event.data.startsWith("new"))
+                    if (typeof event.data === 'string' && event.data.startsWith("new")) {
+				console.log("event: " + event.data);
 				openWithDelay(aboutWin, 400);
+		    }
 
 		    if (typeof event.data === 'string' && event.data.startsWith("Hey yall"))
                     {
