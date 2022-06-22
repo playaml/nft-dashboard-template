@@ -4,7 +4,7 @@ function doSomethingLater() {
 
 	if(window.location.href.indexOf("#") != -1)  {  
 	  alert("Going to hide background");
-	  const collection = document.getElementsByClassName("example");
+	  const collection = document.getElementsByClassName("wm-space");
 	  for (let i = 0; i < collection.length; i++) {
 	    collection[i].style.backgroundImage = "none";
 	  }
