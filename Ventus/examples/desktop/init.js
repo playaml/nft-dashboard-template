@@ -2,7 +2,7 @@
 
 function doSomethingLater() {
 
-	if (window.location.search.length > 0) {
+	if(window.location.hash)  {
 	  alert("Going to hide background");
 	  const collection = document.getElementsByClassName("example");
 	  for (let i = 0; i < collection.length; i++) {
