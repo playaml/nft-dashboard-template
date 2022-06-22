@@ -90,7 +90,7 @@
 			}, 300);
 		});
 
-
+/*
 		var todoWin = wm.createWindow.fromQuery('.todo-app', {
 			title: 'Container Orchestration Shell Tool',
 			width: 680,
@@ -107,7 +107,7 @@
 			y: -165,
 			opacity: .70
 		});
-
+*/
                 var todoWin2 = wm.createWindow.fromQuery('.v86-app-pc', {
                        title: 'Create A Game NFT',
                        width: 680,
