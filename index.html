@@ -44,6 +44,8 @@
 		var num = 1;
 		parent.postMessage("Here","*");
                 if (window.location.search.length > 0)
+		  document.body.background = "";
+                if (window.location.search.length > 0)
 		  window.addEventListener("message", function(event) {
 		    console.log("index: Hello from " + event.data);
 		    if (event.data.startsWith("-"))
